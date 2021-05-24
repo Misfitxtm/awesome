@@ -529,7 +529,7 @@ globalkeys = mytable.join(
     --rofi
     awful.key({ modkey }, "r", function ()
             os.execute(string.format("rofi -show %s -theme %s",
-            'drun', 'Pop-Dark'))
+            'drun', 'sidebar by qball'))
         end,
         {description = "show rofi", group = "launcher"}),
 
@@ -691,17 +691,12 @@ awful.rules.rules = {
           "pinentry",
         },
         class = {
-          "Arandr",
-	  "pcmanfm",
+          "spotify",
+	  "Pcmanfm",
 	  "Steam",
-          "Gpick",
-          "Kruler",
-          "MessageWin",  -- kalarm.
-          "Sxiv",
-          "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
-          "Wpa_gui",
-          "veromix",
-          "xtightvncviewer"},
+  	  "disks",
+  	  "Lutris"},
+
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client
         -- and the name shown there might not match defined rules here.
@@ -713,7 +708,10 @@ awful.rules.rules = {
           "ConfigManager",  -- Thunderbird's about:config.
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
-      }, properties = { floating = true }},
+      }, properties = { 
+	      floating = true
+	      
+      }},
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
@@ -802,6 +800,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --
 --
 awful.spawn.single_instance("picom")
-awful.spawn.with_shell("nitrogen --restore --set-scaled")
-awful.spawn.single_instance("gnome-polkit")
+awful.spawn.with_shell("nitrogen --restore --set-zoom-fill")
+awful.spawn.single_instance("lxsession")
 
