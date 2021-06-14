@@ -106,7 +106,7 @@ local cycle_prev   = true  -- cycle with only the previously focused client or a
 local editor       = os.getenv("EDITOR") or "vim"
 local browser      = "brave-nightly"
 local explorer	   = "pcmanfm"
-
+local powermenu    = "~/.config/rofi/bin/powermenu.sh"
 awful.util.terminal = terminal
 awful.util.tagnames = { "Terminal", "Browser", "Dev", "Games", "Files" }
 awful.layout.layouts = {
@@ -380,7 +380,7 @@ globalkeys = mytable.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift", "Control" }, "q", awesome.quit,
+    awful.key({ modkey	}, "l", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
     awful.key({ modkey, altkey    }, "l",     function () awful.tag.incmwfact( 0.05)          end,
@@ -691,11 +691,12 @@ awful.rules.rules = {
           "pinentry",
         },
         class = {
-          "spotify",
+          "Spotify",
 	  "Pcmanfm",
 	  "Steam",
   	  "disks",
-  	  "Lutris"},
+  	  "Lutris",
+  	  "Galculator"},
 
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -800,6 +801,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --
 --
 awful.spawn.single_instance("picom")
-awful.spawn.with_shell("nitrogen --restore --set-zoom-fill")
+awful.spawn.with_shell("nitrogen --restore")
 awful.spawn.single_instance("lxsession")
 
