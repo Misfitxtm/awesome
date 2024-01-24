@@ -1,7 +1,7 @@
 --[[
 
      Awesome WM configuration template
-     github.com/lcpz
+     Written by: Misfitxtm (Joshua Penland)
 
 --]]
 
